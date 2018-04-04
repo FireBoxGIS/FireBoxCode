@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Mar 20 12:24:41 2018
+
+@author: Brian Schleckser
+"""
+
+import numpy as np
+import arcpy
+from arcpy import env
+import arcpy.sa as sa
+arcpy.CheckOutExtension("Spatial")
+
+#file mgmt and path
+path = r'C:\Users\Brian Schleckser\Desktop\Working\proj\FIREBOX'
+env.workspace = path + '\data'
+
+#env.workspace = os.getcwd()+'/data'
+env.overwriteOutput = 1
+(arcpy.CreateFileGDB_management(path, "results.gdb"))
+gdb = path + '/results.gdb'
+
+openSpace = 'County_Open_Space.shp'
+where = ' "PROP_NAME\" LIKE \'HEIL VALLEY RANCH%\' '
+select = arcpy.Select_analysis(openSpace, gdb + '/HVR_select', where) 
+
+dissolve = arcpy.Dissolve_management(in_features= select, out_feature_class= gdb + "/HVR_dissolve", dissolve_field="IS_CURRENT", statistics_fields="", multi_part="MULTI_PART", unsplit_lines="DISSOLVE_LINES")
+
+
+images = " 'm_4010554_nw_13_1_20170828.tif'; 'm_4010554_ne_13_1_20170828.tif'; 'm_4010554_sw_13_1_20170828.tif'; 'm_4010554_se_13_1_20170828.tif' "
+
+
+mosaic = arcpy.MosaicToNewRaster_management(input_rasters=images, output_location=gdb, raster_dataset_name_with_extension="mosaicImage.tif", coordinate_system_for_the_raster="PROJCS['NAD_1983_UTM_Zone_13N',GEOGCS['GCS_North_American_1983',DATUM['D_North_American_1983',SPHEROID['GRS_1980',6378137.0,298.257222101]],PRIMEM['Greenwich',0.0],UNIT['Degree',0.0174532925199433]],PROJECTION['Transverse_Mercator'],PARAMETER['False_Easting',500000.0],PARAMETER['False_Northing',0.0],PARAMETER['Central_Meridian',-105.0],PARAMETER['Scale_Factor',0.9996],PARAMETER['Latitude_Of_Origin',0.0],UNIT['Meter',1.0]]", pixel_type="8_BIT_UNSIGNED", cellsize="1", number_of_bands="4", mosaic_method="FIRST", mosaic_colormap_mode="FIRST")
+# Replace a layer/table view name with a path to a dataset (which can be a layer file) or create the layer/table view within the script
+# The following inputs are layers or table views: "mosaicImage", "HVR_dissolve"
+arcpy.Clip_management(in_raster=mosaic, rectangle="470755.337171588 4442307.23442861 477645.886620258 4450947.15118142", out_raster= gdb + "AOI_image.tif", in_template_dataset=dissolve, nodata_value="255", clipping_geometry="ClippingGeometry", maintain_clipping_extent="NO_MAINTAIN_EXTENT")
+
+
+
+
+
+
