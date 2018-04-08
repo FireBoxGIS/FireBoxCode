@@ -1,9 +1,9 @@
 >>>>>>>4/8/18
 >>>>>>>Brian, Eric, Drew
 
-Proposed work: -decide surface classes *
+Proposed work: -decide surface classes 
                   -4+ dead, barren, manmade
-               -decide test site final shape*
+               -decide test site final shape
                   -clipping to polygon extent, not perimeter.
                -preform classification in ENVI, ARCMAP
                   -create signiture test area, develop classification training?
@@ -14,6 +14,10 @@ Completed:  -decide surface classes
               -4+ dead, barren, manmade
             -decide test site final shape
               -clipping to polygon extent, not perimeter.
+            -preform classification in ENVI, ARCMAP
+               ********-create signiture test area, develop classification training?****
+            -consider DEM...conversion to numpy? slope raster?
+            -create sample visualization
                
                
                
