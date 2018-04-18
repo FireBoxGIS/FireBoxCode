@@ -1,0 +1,42 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Wed Apr 18 11:43:18 2018
+
+@author: Brian Schleckser
+"""
+
+import numpy as np
+import os
+#from numpy.lib import stride_tricks
+import arcpy
+from arcpy import env
+import arcpy.sa as sa
+arcpy.CheckOutExtension("Spatial")
+
+#file mgmt and path
+path = r'C:\Users\Brian Schleckser\Desktop\Working\proj\FIREBOX'
+#env.workspace = os.getcwd()+'/data'
+env.workspace = path + r'\firebox_phase2_share'
+#gdb_workspace = path + '\phase2_results'
+env.overwriteOutput = 1
+#test site: 6891 col, 8641 row CONFORM TO THIS
+#**************input data and raster
+test_site = sa.Raster('test_site_mosaic_Clip.tif')
+dem = sa.Raster('Slope_DEM_degree.tif')
+land_class = sa.Raster('Shrink_Class1.tif')
+
+
+#determining extent and orientation
+cellSize = 1
+NS = 8641
+EW = 6891
+llpnt = test_site.extent.lowerLeft
+spref = test_site.spatialReference
+
+#setting up arrays
+#dem_np = arcpy.RasterToNumPyArray(dem)
+land_class_np = arcpy.RasterToNumPyArray(land_class)
+
+#***************working raster
+workRaster = np.zeros(land_class_np.shape).astype(float)
+
