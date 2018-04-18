@@ -28,3 +28,4 @@ fuel models: https://en.wikipedia.org/wiki/Fuel_model ... anderson
 safety zone calculation: http://wildfiretoday.com/2014/05/23/proposed-new-guidelines-for-safety-zones/safety-zone-calculation-2/ 
 red edge, live/dead veg assesment: https://www.researchgate.net/publication/283419755_Using_the_red-edge_bands_on_Sentinel-2_for_retrieving_canopy_chlorophyll_and_nitrogen_content
 slope tool education: https://www.esri.com/arcgis-blog/products/product/imagery/setting-the-z-factor-parameter-correctly/?rmedium=redirect&rsource=blogs.esri.com%2Fesri%2Farcgis%2F2007%2F06%2F12%2Fsetting-the-z-factor-parameter-correctly
+highway grades in colorado: https://www.codot.gov/travel/maximum-grades-on-colorado-mountain-passes.html
