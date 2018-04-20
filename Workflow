@@ -19,6 +19,47 @@ Completed:  -decide surface classes
             -consider DEM...conversion to numpy? slope raster?
             -create sample visualization
                
+>>>>>>>>>>4/11/18
+>>>>>>>>>>B,E,D
+
+Proposed work: -Explore other classification layers such as NDVI, NCLD
+               -Get standard 3x3 focal window going
+               -finalize base classification
+               
+Completed: -Very little.
+           -Shadow correction on base classification completed.
+           
+>>>>>>>>>>4/18/18
+>>>>>>>>>>B,E,D
+
+Proposed work: -Go over all existing data to monitor cell size, projection, raster size etc.
+               -Develop plan for days before presentation
+               -Explore other classification layers such as NDVI, NLCD
+               -Get focal window going
+               
+Completed work: -All existing layers normalized to same projection, cell size, extent and raster count.
+                -plan developed for next 96 hrs
+                -backup crutch solutions thought up for work till monday
+                -discussion on where conditions regarding slope raster, passability of vehicles 
+                
+>>>>>>>>>>4/19/18
+>>>>>>>>>>B
+
+Proposed work: -Rough out slides for presentations
+               -Code some phase 0 data processing work
+               
+Completed work: -basic slides created, little content filled in
+                -beginnings of phase 0 code created. Struggling with Error 000210 and GDB implementation. 
+                
+>>>>>>>>>>4/20/18
+>>>>>>>>>>B
+
+Proposed work: -add to slides
+               -complete the crutch solution, observing slope and class selection for areas that are open to ID passable zones
+               -consider testing focal window and getting some nlcd data and such
+               -cry deeply
+               
+          
                
                
                
